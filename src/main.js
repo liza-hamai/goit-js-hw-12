@@ -98,13 +98,13 @@ loadMoreBtn.addEventListener('click', async () => {
   page += 1;
 
   try {
+    hideLoadMoreButton();
     showLoader();
 
     const data = await getImagesByQuery(currentQuery, page);
     const { hits } = data;
 
     if (!hits || hits.length === 0) {
-      hideLoadMoreButton();
       iziToast.info({
         title: 'End of results',
         message: "We're sorry, but you've reached the end of search results.",
